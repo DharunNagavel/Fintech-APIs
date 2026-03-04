@@ -1,15 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import AppRoutes from './routes/AppRoutes';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Signup from './pages/Signup';
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>   
+        <Route path="/signin" element={<Login/>}/>   
+        <Route path="/signup" element={<Signup/>}/>   
+      </Routes>
+    </BrowserRouter>
   );
 }
 
