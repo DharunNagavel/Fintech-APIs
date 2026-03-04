@@ -10,6 +10,7 @@ const Signup = () => {
     mobile: "",
     address: "",
     mail: "",
+    dob: "",
     panFile: null,
     password: "",
     confirmPassword: "",
@@ -45,16 +46,51 @@ const Signup = () => {
       alert("Failed to send OTP");
     }
   };
+  const extractPan = async () => {
+    if (!formData.panFile) {
+      alert("Please upload PAN card");
+      return null;
+    }
+
+    const formDataUpload = new FormData();
+    formDataUpload.append("file", formData.panFile);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/pan-ocr",
+        formDataUpload,
+      );
+
+      console.log("OCR Result:", res.data);
+
+      if (res.data.pan_valid) {
+        return res.data.pan_number;
+      }
+
+      alert("PAN not detected");
+      return null;
+    } catch (err) {
+      console.error(err);
+      alert("PAN OCR failed");
+
+      return null;
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const panNumber = await extractPan();
+
+    if (!panNumber) return;
+
     const payload = {
       firstname: formData.firstName,
       lastname: formData.lastName,
       mail: formData.mail,
       phone: formData.mobile,
-      dob: "2005-01-01", 
+      dob: formData.dob,
       address: formData.address,
-      pan_number: "ABCDE1234F", 
+      pan_number: panNumber,
       password: formData.password,
     };
 
@@ -63,15 +99,15 @@ const Signup = () => {
         "http://localhost:1000/auth/signup",
         payload,
       );
+
       alert("Signup successful");
       console.log(res.data);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.message || "Signup failed");
     }
   };
-
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg">
@@ -113,7 +149,15 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-
+          {/* Date of Birth */}
+          <input
+            type="date"
+            name="dob"
+            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            value={formData.dob}
+            onChange={handleChange}
+            required
+          />
           {/* Address */}
           <textarea
             name="address"
@@ -130,7 +174,7 @@ const Signup = () => {
             name="mail"
             placeholder="Email"
             className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            value={formData.email}
+            value={formData.mail}
             onChange={handleChange}
             required
           />
@@ -171,6 +215,7 @@ const Signup = () => {
           />
           {!showOtpField && (
             <button
+              type="button"
               onClick={handleGenerateOtp}
               className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
             >
