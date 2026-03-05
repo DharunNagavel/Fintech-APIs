@@ -12,15 +12,15 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* ================= HERO SECTION ================= */}
       <section className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div> 
+        <div>
           <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-           AI-Powered Compliance & Risk Intelligence
+            AI-Powered Compliance & Risk Intelligence
           </h2>
           <p className="text-gray-600 text-lg mb-8">
-            Monitor transactions, detect fraud patterns, evaluate AML risk,
-            and automate compliance rules with real-time AI-driven analytics.
+            Monitor transactions, detect fraud patterns, evaluate AML risk, and
+            automate compliance rules with real-time AI-driven analytics.
           </p>
-          
+
           <div className="flex flex-wrap gap-4">
             <Link
               to="/dashboard"
@@ -55,8 +55,8 @@ export default function Home() {
             Built for Modern Financial Compliance
           </h3>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            A scalable AI compliance layer designed for fintech, banking,
-            and digital payments ecosystems.
+            A scalable AI compliance layer designed for fintech, banking, and
+            digital payments ecosystems.
           </p>
         </div>
 
@@ -91,13 +91,6 @@ export default function Home() {
             Deploy scalable AI-driven compliance monitoring and reduce risk
             exposure across your financial systems.
           </p>
-
-          <Link
-            to="/signup"
-            className="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition shadow-md"
-          >
-            Start Free Trial
-          </Link>
         </div>
       </section>
 

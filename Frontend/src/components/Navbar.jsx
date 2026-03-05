@@ -6,10 +6,16 @@ export const Navbar = () => {
         <h1 className="text-xl font-bold text-blue-600">AI Compliance Layer</h1>
         <div className="flex items-center gap-4">
           <Link
-            to="/signin"
+            to="/"
             className="text-gray-600 hover:text-blue-600 transition"
           >
-            Sign In
+            Home
+          </Link>
+          <Link
+            to="/dashboard"
+            className="text-gray-600 hover:text-blue-600 transition"
+          >
+            Dasboard
           </Link>
           <Link
             to="/payment"
