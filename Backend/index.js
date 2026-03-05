@@ -3,6 +3,7 @@ import cors from 'cors';
 import { pool } from './db.js';
 import { authrouter } from './routes/auth.route.js';
 import mailrouter from './routes/mail.route.js';
+import orderrouter from './routes/order.route.js';
 
 const app = express();
 const PORT = 1000;
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authrouter);
 app.use('/mail', mailrouter);
+app.use('/payment', orderrouter);
 
 pool.connect().then(() => {
     console.log('Connected to the database')

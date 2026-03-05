@@ -10,41 +10,17 @@ import {
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* ================= NAVBAR ================= */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-blue-600">
-            AI Compliance Layer
-          </h1>
-
-          <div className="flex items-center gap-4">
-            <Link
-              to="/signin"
-              className="text-gray-600 hover:text-blue-600 transition"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/signup"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm"
-            >
-              Sign Up
-            </Link>
-          </div>
-        </div>
-      </header>
-
       {/* ================= HERO SECTION ================= */}
       <section className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
+        <div> 
           <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            AI-Powered Compliance & Risk Intelligence
+           AI-Powered Compliance & Risk Intelligence
           </h2>
           <p className="text-gray-600 text-lg mb-8">
             Monitor transactions, detect fraud patterns, evaluate AML risk,
             and automate compliance rules with real-time AI-driven analytics.
           </p>
-
+          
           <div className="flex flex-wrap gap-4">
             <Link
               to="/dashboard"

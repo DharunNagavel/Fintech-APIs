@@ -14,6 +14,8 @@ const Signup = () => {
     panFile: null,
     password: "",
     confirmPassword: "",
+    account_number: "",   
+    ifsc: "", 
     otp: "",
   });
   const [showOtpField, setShowOtpField] = useState(false);
@@ -92,6 +94,8 @@ const Signup = () => {
       address: formData.address,
       pan_number: panNumber,
       password: formData.password,
+      account_number: formData.account_number, 
+      ifsc: formData.ifsc,  
     };
 
     try {
@@ -175,6 +179,26 @@ const Signup = () => {
             placeholder="Email"
             className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={formData.mail}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="account_number"
+            placeholder="Bank Account Number"
+            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            value={formData.account_number}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="ifsc"
+            placeholder="IFSC Code"
+            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            value={formData.ifsc}
             onChange={handleChange}
             required
           />
